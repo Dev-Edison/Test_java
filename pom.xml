@@ -11,4 +11,15 @@
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>com.mycompany.cadastro_de_trecos.Cadastro_de_trecos</exec.mainClass>
     </properties>
-</project>
+    
+    <dependencies>
+        
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+        
+    </dependencies>
+        
+</project>                                                                                                                                                               
