@@ -1,9 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
+
 package com.mycompany.cadastro_de_trecos;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class Cadastro_de_trecos {
@@ -32,35 +33,57 @@ public class Cadastro_de_trecos {
 
         // Executa um método conforme a opção escolhida.
         switch (option) {
-            case "0": 
-               exitProgram();
-                break;
-            case "1":
-                break;
-            case "2":
+            case "0" ->
+                exitProgram();
+            case "1" ->
+                listAll();
+            case "2" ->
                 listOne();
-                break;
-                case "3":
-                    newThing();
-                break;
-            case "4":
+            case "3" ->
+                newThing();
+            case "4" ->
                 editThing();
-                break;
-            case "5":
+            case "5" ->
                 deleteThing();
-                break;
-            default:
+            default ->
                 reloadMenu();
         }
     }
-  // Método que encerra o programa.
+
+    // Encerra o programa.
     public static void exitProgram() {
         scanner.close();
+        clearScreen();
         System.out.println("\n\nFui!\n\n");
         System.exit(0);
-     }
- // Lista todos os trecos cadastrados.
+    }
+
+    // Lista todos os trecos cadastrados.
     public static void listAll() {
+
+        try {
+            String sql = "SELECT * FROM things";
+            Connection conn = DbConnection.dbConnect();
+            Statement stmt = conn.createStatement();
+            ResultSet res = stmt.executeQuery(sql);
+
+            while (res.next()) {
+                System.out.println(
+                        "ID: " + res.getString("id") + "\n"
+                        + "Nome: " + res.getString("name") + "\n"
+                        + "Descrição: " + res.getString("description") + "\n"
+                );
+            }
+
+            conn.close();
+            stmt.close();
+            res.close();
+
+        } catch (SQLException error) {
+            System.out.println("Oooops! " + error.getMessage());
+            System.exit(0);
+        }
+
     }
 
     // Lista um treco específico pelo Id.
@@ -81,8 +104,9 @@ public class Cadastro_de_trecos {
 
     // Recarrega o menu principal.
     public static void reloadMenu() {
-        System.out.println("\n\nInválido!\n\n");
-        mainMenu();
+        clearScreen(); // Limpa o terminal.
+        System.out.println("Oooops! Opção inválida!\n");
+        mainMenu();    // Mostra o menu.
     }
 
     // Limpa a tela do terminal.
