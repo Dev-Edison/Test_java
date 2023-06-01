@@ -5,8 +5,11 @@ import net.edison.cadastro_de_trecos.setup.AppSetup;
 import net.edison.cadastro_de_trecos.db.DbConnection;
 import static net.edison.cadastro_de_trecos.setup.AppSetup.*;
 import static net.edison.cadastro_de_trecos.main.Cadastro_de_trecos.*;
+import static net.edison.cadastro_de_trecos.main.Tools.showRes;
 
 public class Read extends AppSetup {
+
+    private static String viewStatus;
 
     // Lista todos os registros.
     public static void readAll() {
@@ -30,14 +33,8 @@ public class Read extends AppSetup {
                 // Se encontrou registros.
                 do {
 
-                    // Exibe registro na view.
-                    System.out.println(
-                            "ID: " + res.getString("id") + "\n"
-                            + "  Nome: " + res.getString("nome") + "\n"
-                            + "  Descrição: " + res.getString("descricao") + "\n"
-                            + "  Localização: " + res.getString("localizacao") + "\n"
-                            + "  Data: " + res.getString("databr") + "\n"
-                    );
+                    showRes(res);
+                    
                 } while (res.next());
             } else {
 
@@ -126,14 +123,8 @@ public class Read extends AppSetup {
 
             if (res.next()) {
 
-                // Se tem registro, exibe na view.
-                System.out.println(
-                        "\nID: " + res.getString("id") + "\n"
-                        + "  Nome: " + res.getString("nome") + "\n"
-                        + " Descrição: " + res.getString("descricao") + "\n"
-                        + " Localização: " + res.getString("localizacao") + "\n"
-                        + " Data: " + res.getString("databr") + "\n"
-                );
+                showRes(res);
+                
             } else {
 
                 // Se não tem registro.
@@ -182,5 +173,4 @@ public class Read extends AppSetup {
 
     }
 
-    
 }

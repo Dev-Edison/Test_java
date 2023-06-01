@@ -6,6 +6,7 @@ import net.edison.cadastro_de_trecos.db.DbConnection;
 import static net.edison.cadastro_de_trecos.main.Cadastro_de_trecos.clearScreen;
 import static net.edison.cadastro_de_trecos.main.Cadastro_de_trecos.exitProgram;
 import static net.edison.cadastro_de_trecos.main.Cadastro_de_trecos.mainMenu;
+import static net.edison.cadastro_de_trecos.main.Tools.showRes;
 import net.edison.cadastro_de_trecos.setup.AppSetup;
 
 public class Update extends AppSetup {
@@ -48,12 +49,7 @@ public class Update extends AppSetup {
             res = pstm.executeQuery();
             if (res.next()) {
 
-                // Se tem registro, exibe na view.
-                System.out.println(
-                        "\nID: " + res.getString("id") + "\n"
-                        + "  Nome: " + res.getString("name") + "\n"
-                        + "  Descrição: " + res.getString("description") + "\n"
-                );
+              showRes(res);
 
                 System.out.println("Insira os novos dados ou deixe em branco para manter os atuais:\n");
 
