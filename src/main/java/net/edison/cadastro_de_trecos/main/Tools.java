@@ -12,7 +12,7 @@ public class Tools {
                     + "  Nome: " + res.getString("nome") + "\n"
                     + "  Descrição: " + res.getString("descricao") + "\n"
                     + "  Localização: " + res.getString("localizacao") + "\n"
-                    + "  Data: " + res.getString("data") + "\n"
+                    + "  Data: " + res.getString("databr") + "\n"
             );
         } catch (SQLException error) {
 

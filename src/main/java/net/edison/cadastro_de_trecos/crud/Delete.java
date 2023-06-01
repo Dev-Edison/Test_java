@@ -51,14 +51,14 @@ public class Delete extends AppSetup {
                 // Se tem registro, exibe na view.
                 System.out.println(
                         "\nID: " + res.getString("id") + "\n"
-                        + "  Nome: " + res.getString("name") + "\n"
-                        + "  Descrição: " + res.getString("description") + "\n"
+                        + "  Nome: " + res.getString("nome") + "\n"
+                        + "  Descrição: " + res.getString("descricao") + "\n"
                 );
 
                 System.out.print("Tem certeza que deseja apagar o registro? [s/N] ");
                 if (scanner.next().trim().toLowerCase().equals("s")) {
 
-                    sql = "DELETE FROM " + DBTABLE + " WHERE id = ?";
+                    sql = "UPDATE " + DBTABLE + " SET status = '0' WHERE id = ?";
                     pstm = conn.prepareStatement(sql);
                     pstm.setInt(1, id);
                     if (pstm.executeUpdate() == 1) {

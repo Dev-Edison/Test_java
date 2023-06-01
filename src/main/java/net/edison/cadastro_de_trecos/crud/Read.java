@@ -19,7 +19,7 @@ public class Read extends AppSetup {
         try {
 
             // Consulta o banco de dados.
-            String sql = "SELECT * FROM " + DBTABLE;
+            String sql = "SELECT *, DATE_FORMAT(data,  '%d/%m/%Y ás %H:%i') AS databr FROM " + DBTABLE + " WHERE status != '0'";
             conn = DbConnection.dbConnect();
             stmt = conn.createStatement();
             res = stmt.executeQuery(sql);
@@ -36,7 +36,7 @@ public class Read extends AppSetup {
                             + "  Nome: " + res.getString("nome") + "\n"
                             + "  Descrição: " + res.getString("descricao") + "\n"
                             + "  Localização: " + res.getString("localizacao") + "\n"
-                            + "  Data: " + res.getString("data") + "\n"
+                            + "  Data: " + res.getString("databr") + "\n"
                     );
                 } while (res.next());
             } else {
@@ -114,7 +114,7 @@ public class Read extends AppSetup {
         try {
 
             // Faz consulta no banco de dados usando "preparedStatement".
-            sql = "SELECT * FROM " + DBTABLE + " WHERE id = ?";
+            sql = "SELECT *, DATE_FORMAT(data,  '%d/%m/%Y ás %H:%i') AS databr FROM " + DBTABLE + " WHERE status != '0' AND id = ?";
             conn = DbConnection.dbConnect();
             pstm = conn.prepareStatement(sql);
 
@@ -129,9 +129,10 @@ public class Read extends AppSetup {
                 // Se tem registro, exibe na view.
                 System.out.println(
                         "\nID: " + res.getString("id") + "\n"
-                        + "  Nome: " + res.getString("name") + "\n"
-                        + "  "
-                        + "Descrição: " + res.getString("description") + "\n"
+                        + "  Nome: " + res.getString("nome") + "\n"
+                        + " Descrição: " + res.getString("descricao") + "\n"
+                        + " Localização: " + res.getString("localizacao") + "\n"
+                        + " Data: " + res.getString("databr") + "\n"
                 );
             } else {
 
@@ -181,4 +182,5 @@ public class Read extends AppSetup {
 
     }
 
+    
 }
