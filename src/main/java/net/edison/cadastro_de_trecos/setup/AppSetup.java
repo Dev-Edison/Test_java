@@ -16,20 +16,20 @@ public class AppSetup {
     // String de conexão com o banco de dados SQLite
     //                                             tipo   caminho       database
     //                                              ↓      ↓             ↓ 
-    protected static final String SQLITEURL = "jdbc:sqlite:src/resources/things.db";
+    protected static final String SQLITEURL = "jdbc:sqlite:src/resources/crudinho.db";
 
     // String de conexão com o banco de dados MySQL
     //                                            tipo    servidor  porta database   usuário       senha
     //                                             ↓       ↓         ↓     ↓           ↓             ↓ 
-    protected static final String MYSQLURL = "jdbc:mysql://localhost:3306/things?user=root&password=";
+    protected static final String MYSQLURL = "jdbc:mysql://localhost:3306/crudinho?user=root&password=";
 
     // String de conexão com o banco de dados PostGreeSQL
     //                                               tipo         servidor  porta database   usuário      senha
     //                                                ↓            ↓         ↓     ↓           ↓             ↓       
-    protected static final String POSTGREEURL = "jdbc:postgresql://localhost:5432/things?user=root&password=root";
+    protected static final String POSTGREEURL = "jdbc:postgresql://localhost:5432/crudinho?user=root&password=root";
 
     // Tabela principal.
-    protected static final String DBTABLE = "things";
+    protected static final String DBTABLE = "trecos";
 
     // Objeto que recebe dados do teclado.
     protected static Scanner scanner = new Scanner(System.in, "latin1");

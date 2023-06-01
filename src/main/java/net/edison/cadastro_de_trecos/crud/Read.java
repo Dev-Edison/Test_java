@@ -33,8 +33,10 @@ public class Read extends AppSetup {
                     // Exibe registro na view.
                     System.out.println(
                             "ID: " + res.getString("id") + "\n"
-                            + "  Nome: " + res.getString("name") + "\n"
-                            + "  Descrição: " + res.getString("description") + "\n"
+                            + "  Nome: " + res.getString("nome") + "\n"
+                            + "  Descrição: " + res.getString("descricao") + "\n"
+                            + "  Localização: " + res.getString("localizacao") + "\n"
+                            + "  Data: " + res.getString("data") + "\n"
                     );
                 } while (res.next());
             } else {
