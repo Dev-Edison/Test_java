@@ -131,27 +131,36 @@ public class NewJFrame extends javax.swing.JFrame {
 
         tableListAll.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Descrição"
+                "ID", "Data", "Nome", "Descrição", "Localização", "Status"
             }
-        ));
-        tableListAll.setShowGrid(false);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableListAll.setShowGrid(true);
         jScrollPane1.setViewportView(tableListAll);
         if (tableListAll.getColumnModel().getColumnCount() > 0) {
             tableListAll.getColumnModel().getColumn(0).setMinWidth(5);
-            tableListAll.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tableListAll.getColumnModel().getColumn(0).setPreferredWidth(100);
             tableListAll.getColumnModel().getColumn(0).setMaxWidth(60);
             tableListAll.getColumnModel().getColumn(1).setMinWidth(50);
-            tableListAll.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tableListAll.getColumnModel().getColumn(1).setPreferredWidth(170);
             tableListAll.getColumnModel().getColumn(1).setMaxWidth(300);
-            tableListAll.getColumnModel().getColumn(2).setMinWidth(100);
-            tableListAll.getColumnModel().getColumn(2).setPreferredWidth(500);
-            tableListAll.getColumnModel().getColumn(2).setMaxWidth(600);
+            tableListAll.getColumnModel().getColumn(2).setPreferredWidth(150);
+            tableListAll.getColumnModel().getColumn(3).setPreferredWidth(290);
+            tableListAll.getColumnModel().getColumn(4).setPreferredWidth(120);
+            tableListAll.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout PanelListAllLayout = new javax.swing.GroupLayout(PanelListAll);
@@ -164,7 +173,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(PanelListAllLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PanelListAllLayout.setVerticalGroup(
@@ -188,7 +197,7 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(PanelListIdLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(550, Short.MAX_VALUE))
+                .addContainerGap(576, Short.MAX_VALUE))
         );
         PanelListIdLayout.setVerticalGroup(
             PanelListIdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +250,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addGroup(PanelCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
                                 .addComponent(jTextField2)))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         PanelCadLayout.setVerticalGroup(
             PanelCadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +281,7 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(PanelEditLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addContainerGap(614, Short.MAX_VALUE))
         );
         PanelEditLayout.setVerticalGroup(
             PanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +302,7 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(PanelDeleteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(580, Short.MAX_VALUE))
+                .addContainerGap(606, Short.MAX_VALUE))
         );
         PanelDeleteLayout.setVerticalGroup(
             PanelDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +318,7 @@ public class NewJFrame extends javax.swing.JFrame {
         PanelExit.setLayout(PanelExitLayout);
         PanelExitLayout.setHorizontalGroup(
             PanelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
         PanelExitLayout.setVerticalGroup(
             PanelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,34 +332,35 @@ public class NewJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnListAll)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelTittle)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnListid)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCad)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEdit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExit)))
+                        .addComponent(btnListid)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExit)
                         .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(LabelTittle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(18, 18, 18)
                 .addComponent(LabelTittle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListAll)
                     .addComponent(btnListid)
@@ -360,16 +370,16 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(btnExit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(656, 488));
+        setSize(new java.awt.Dimension(734, 488));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnListAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListAllActionPerformed
         CardLayout card = (CardLayout) mainPanel.getLayout();
-        card.show(mainPanel,  "CardListAll");
+        card.show(mainPanel, "CardListAll");
     }//GEN-LAST:event_btnListAllActionPerformed
 
     private void btnListidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListidActionPerformed
@@ -392,7 +402,7 @@ public class NewJFrame extends javax.swing.JFrame {
         card.show(mainPanel, "CardDelete");
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
 //GEN-FIRST:event_btnExitActionPerformed
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.noButtonText", "Não");
@@ -405,7 +415,7 @@ public class NewJFrame extends javax.swing.JFrame {
         if (option == 0) {
             System.exit(0);
         }
-       
+
         if (option == 0) {
             System.exit(0);
         }
@@ -417,7 +427,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         JOptionPane.showMessageDialog(null, jTextField1.getText() + "\n" + jTextField2.getText());
+        JOptionPane.showMessageDialog(null, jTextField1.getText() + "\n" + jTextField2.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -486,25 +496,53 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private static javax.swing.JTable tableListAll;
     // End of variables declaration//GEN-END:variables
-    
+
     public static void listAll() {
         try {
-            String sql = "SELECT * FROM things";
+            String sql = "SELECT *, DATE_FORMAT(data,  '%d/%m/%Y ás %H:%i') AS databr "
+                    + "FROM trecos "
+                    + "WHERE STATUS != '0' "
+                    + "ORDER BY nome ASC";
             Connection conn = DbConnection.dbConnect();
             Statement stmt = conn.createStatement();
             ResultSet res = stmt.executeQuery(sql);
 
             DefaultTableModel model = (DefaultTableModel) tableListAll.getModel();
             model.setNumRows(0);
+            
+            String viewStatus;
+
+            while (res.next()) {
+
+                if (res.getString("status").equals("1")) {
+                    viewStatus = "BLOQUEADO";
+                } else {
+                    viewStatus = "ATIVO";
+                }
+
+                model.addRow(new Object[]{
+                    res.getString("id"),
+                    res.getString("databr"),
+                    res.getString("nome"),
+                    res.getString("descricao"),
+                    res.getString("localizacao"),
+                    viewStatus
+                });
+            }
 
             while (res.next()) {
                 model.addRow(new Object[]{
                     res.getString("id"),
-                    res.getString("name"),
-                    res.getString("description")
-                });
+                    res.getString("databr"),
+                    res.getString("nome"),
+                    res.getString("descricao"),
+                    res.getString("localizacao"),
+                    res.getString("status")
+
+                }
+                );
             }
-            
+
             DbConnection.dbClose(res, stmt, null, conn);
 
         } catch (SQLException error) {
@@ -514,8 +552,4 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }
 
-
 }
-
-
-
